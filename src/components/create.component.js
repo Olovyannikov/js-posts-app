@@ -11,7 +11,7 @@ export class CreateComponent extends Component {
         this.$el.addEventListener('submit', submitHandler.bind(this));
         this.form = new Form(this.$el, {
             title: [Validators.required],
-            fulltext: [Validators.required]
+            fulltext: [Validators.required, Validators.minLength(10)]
         });
     }
 }
@@ -24,5 +24,7 @@ function submitHandler(e) {
             type: this.$el.type.value,
             ...this.form.value()
         }
+
+        this.form.clear();
     }
 }
