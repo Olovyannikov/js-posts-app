@@ -1,6 +1,7 @@
 const path = __dirname + '/dist';
 const HTMLPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
@@ -49,7 +50,11 @@ module.exports = {
         ]
     },
     optimization: {
-        minimize: true
+        minimize: true,
+        minimizer: [
+            `...`,
+            new CssMinimizerPlugin(),
+        ]
     }
 
 }
